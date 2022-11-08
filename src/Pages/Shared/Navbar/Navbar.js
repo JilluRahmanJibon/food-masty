@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import logo from "../../assets/logo.png";
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	return (
@@ -13,6 +13,7 @@ const Navbar = () => {
 							aria-label="Food&Masty"
 							title="Food&Masty"
 							class="inline-flex items-center">
+							<img className="w-10" src={logo} alt="" />
 							<span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
 								Food&Masty
 							</span>
