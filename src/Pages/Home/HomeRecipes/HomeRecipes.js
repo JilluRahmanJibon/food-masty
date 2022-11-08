@@ -13,7 +13,7 @@ const HomeRecipes = () => {
 				setRecipes(result);
 			});
 	}, []);
-	console.log(recipes);
+
 	return (
 		<div className=" mt-32 border p-5 border-gray-600 rounded">
 			<div className="sm:flex-row flex justify-between flex-col items-center border-b border-gray-500 pb-5">

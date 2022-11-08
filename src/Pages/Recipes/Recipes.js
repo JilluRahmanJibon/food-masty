@@ -14,14 +14,14 @@ const Recipes = () => {
 	}, []);
 	return (
 		<div>
-			<div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-10 mb-10">
+			<div className="grid xl:grid-cols-3 md:grid-cols-2 gap-8 mt-10 mb-10">
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
 						<div className="bg-gray-100 ">
 							<PhotoProvider>
 								<PhotoView src={recipe.img}>
 									<img
-										className="border-b-2 cursor-pointer border-gray-400"
+										className="border-b-2 md:h-[300px] w-full cursor-pointer border-gray-400"
 										src={recipe.img}
 										alt=""
 									/>
