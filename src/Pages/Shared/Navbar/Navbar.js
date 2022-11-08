@@ -1,30 +1,39 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import logo from "../../assets/logo.png";
 const Navbar = () => {
+	const { user } = useContext(AuthContext);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	return (
 		<div>
 			<div className="bg-gray-900">
 				<div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
 					<div className="relative flex items-center justify-between">
-						<Link
-							to="/"
-							aria-label="Food&Masty"
-							title="Food&Masty"
-							className="inline-flex items-center">
-							<img className="w-10" src={logo} alt="" />
-							<span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-								Food&Masty
-							</span>
-						</Link>
+						<div className="lg:w-0 w-full">
+							<Link
+								to="/"
+								aria-label="Food&Masty"
+								title="Food&Masty"
+								className="inline-flex items-center">
+								<img className="sm:w-10 w-8" src={logo} alt="" />
+								<span className="ml-2 sm:text-xl font-bold tracking-wide text-gray-100 uppercase">
+									Food&Masty
+								</span>
+							</Link>
+						</div>
 						<ul className="flex items-center hidden space-x-8 lg:flex">
 							<li>
 								<NavLink
 									to="/home"
 									aria-label="Home"
 									title="Home"
-									className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+									className={({ isActive }) =>
+										isActive
+											? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+											: "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+									}>
 									Home
 								</NavLink>
 							</li>
@@ -33,75 +42,83 @@ const Navbar = () => {
 									to="/recipes"
 									aria-label="Our Recipes"
 									title="Our Recipes"
-									className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+									className={({ isActive }) =>
+										isActive
+											? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+											: "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+									}>
 									Recipes
 								</NavLink>
 							</li>
+							{user?.email ? (
+								<>
+									<li>
+										<NavLink
+											to="/addRecipe"
+											aria-label="Add Recipes"
+											title="Add Recipes"
+											className={({ isActive }) =>
+												isActive
+													? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+													: "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+											}>
+											Add Recipe
+										</NavLink>
+									</li>
+									<li>
+										<NavLink
+											to="/review"
+											aria-label="My Review"
+											title="My Review"
+											className={({ isActive }) =>
+												isActive
+													? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+													: "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+											}>
+											My Review
+										</NavLink>
+									</li>
+								</>
+							) : undefined}
 							<li>
 								<NavLink
 									to="/blog"
 									aria-label="Blog"
 									title="Blog"
-									className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+									className={({ isActive }) =>
+										isActive
+											? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+											: "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+									}>
 									Blog
 								</NavLink>
 							</li>
-							<li>
-								<NavLink
-									to=""
-									aria-label="About us"
-									title="About us"
-									className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-									About us
-								</NavLink>
-							</li>
 						</ul>
-						<ul className="flex items-center hidden space-x-8 lg:flex">
-							<li>
-								<NavLink
-									to=""
-									className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-									aria-label="Sign up"
-									title="Sign up">
-									Sign up
-								</NavLink>
-							</li>
-						</ul>
-						<div className="lg:hidden">
+
+						<div className="lg:hidden z-50 mr-3">
 							<button
 								aria-label="Open Menu"
 								title="Open Menu"
 								className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
 								onClick={() => setIsMenuOpen(true)}>
-								<svg className="w-5 text-gray-600" viewBox="0 0 24 24">
-									<path
-										fill="currentColor"
-										d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
-									/>
-									<path
-										fill="currentColor"
-										d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
-									/>
-									<path
-										fill="currentColor"
-										d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
-									/>
-								</svg>
+								<FaBars />
 							</button>
 							{isMenuOpen && (
 								<div className="absolute top-0 left-0 w-full">
 									<div className="p-5 bg-white border rounded shadow-sm">
 										<div className="flex items-center justify-between mb-4">
 											<div>
-												<NavLink
+												<Link
 													to=""
 													aria-label="Food&Masty"
 													title="Food&Masty"
 													className="inline-flex items-center">
+													{" "}
+													<img className="w-10" src={logo} alt="" />
 													<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
 														Food&Masty
 													</span>
-												</NavLink>
+												</Link>
 											</div>
 											<div>
 												<button
@@ -109,14 +126,7 @@ const Navbar = () => {
 													title="Close Menu"
 													className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
 													onClick={() => setIsMenuOpen(false)}>
-													<svg
-														className="w-5 text-gray-600"
-														viewBox="0 0 24 24">
-														<path
-															fill="currentColor"
-															d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-														/>
-													</svg>
+													<FaTimes className="text-2xl" />
 												</button>
 											</div>
 										</div>
@@ -124,10 +134,14 @@ const Navbar = () => {
 											<ul className="space-y-4">
 												<li>
 													<NavLink
+														className={({ isActive }) =>
+															isActive
+																? "font-medium tracking-wide text-red-500   transition-colors duration-200 hover:text-deep-purple-accent-400"
+																: "font-medium tracking-wide text-gray-700  transition-colors duration-200 hover:text-deep-purple-accent-400"
+														}
 														to="/"
 														aria-label="Home"
-														title="Home"
-														className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+														title="Home">
 														Home
 													</NavLink>
 												</li>
@@ -136,7 +150,11 @@ const Navbar = () => {
 														to="/recipes"
 														aria-label="Recipes"
 														title="Recipes"
-														className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+														className={({ isActive }) =>
+															isActive
+																? "font-medium tracking-wide text-red-500 transition-colors duration-200 hover:text-deep-purple-accent-400"
+																: "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+														}>
 														Recipes
 													</NavLink>
 												</li>
@@ -145,19 +163,15 @@ const Navbar = () => {
 														to="/blog"
 														aria-label="Blog"
 														title="Blog"
-														className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+														className={({ isActive }) =>
+															isActive
+																? "font-medium tracking-wide text-red-500 transition-colors duration-200 hover:text-deep-purple-accent-400"
+																: "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+														}>
 														Blog
 													</NavLink>
 												</li>
-												<li>
-													<NavLink
-														to=""
-														aria-label="About us"
-														title="About us"
-														className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
-														About us
-													</NavLink>
-												</li>
+
 												<li>
 													<NavLink
 														to=""
@@ -173,6 +187,31 @@ const Navbar = () => {
 								</div>
 							)}
 						</div>
+						<ul className="flex items-center  space-x-8 lg:flex">
+							{user?.email ? (
+								<div>
+									{" "}
+									<div className="">
+										<img
+											title={user?.displayName}
+											className="sm:w-12  sm:h-12 w-10 h-10  cursor-pointer rounded-full"
+											src={user?.photoURL}
+											alt=""
+										/>{" "}
+									</div>
+								</div>
+							) : (
+								<li>
+									<NavLink
+										to="signin"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										aria-label="Sign In"
+										title="Sign In">
+										Sign In
+									</NavLink>
+								</li>
+							)}
+						</ul>
 					</div>
 				</div>
 			</div>

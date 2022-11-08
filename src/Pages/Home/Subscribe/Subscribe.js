@@ -48,7 +48,7 @@ const Subscribe = () => {
 							/>
 							<button
 								type="submit"
-								className=" bg-white hover:bg-red-500 hover:text-white transition-all px-5 p-3  md:rounded-r-lg  ">
+								className=" bg-red-500   hover:text-white transition-all px-5 p-3  md:rounded-r-lg  ">
 								Subscribe
 							</button>
 						</form>
