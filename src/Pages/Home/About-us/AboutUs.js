@@ -2,7 +2,7 @@ import React from "react";
 import person from "../../assets/images/about_us/person.jpg";
 const AboutUs = () => {
 	return (
-		<div className="my-20">
+		<div className="mt-28 border-b pb-5 border-gray-500">
 			<div className="lg:flex gap-10">
 				<div className="lg:w-1/2">
 					<img className="rounded-xl " src={person} alt="" />
