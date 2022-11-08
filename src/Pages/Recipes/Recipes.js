@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AOS from "aos";
 import { Link } from "react-router-dom";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { PhotoProvider, PhotoView } from "react-photo-view";
@@ -12,12 +13,15 @@ const Recipes = () => {
 				setRecipes(result);
 			});
 	}, []);
+	useEffect(() => {
+		AOS.init();
+	}, []);
 	return (
 		<div>
 			<div className="grid xl:grid-cols-3 md:grid-cols-2 gap-8 mt-10 mb-10">
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
-						<div className="bg-gray-100 ">
+						<div data-aos="fade-up" className="bg-gray-100 ">
 							<PhotoProvider>
 								<PhotoView src={recipe.img}>
 									<img

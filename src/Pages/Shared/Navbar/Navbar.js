@@ -68,14 +68,14 @@ const Navbar = () => {
 									<li>
 										<NavLink
 											to="/review"
-											aria-label="My Review"
-											title="My Review"
+											aria-label="My Reviews"
+											title="My Reviews"
 											className={({ isActive }) =>
 												isActive
 													? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
 													: "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
 											}>
-											My Review
+											My Reviews
 										</NavLink>
 									</li>
 								</>
@@ -158,6 +158,36 @@ const Navbar = () => {
 														Recipes
 													</NavLink>
 												</li>
+												{user?.email ? (
+													<>
+														<li>
+															<NavLink
+																to="/addRecipe"
+																aria-label="Add Recipes"
+																title="Add Recipes"
+																className={({ isActive }) =>
+																	isActive
+																		? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+																		: "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+																}>
+																Add Recipe
+															</NavLink>
+														</li>
+														<li>
+															<NavLink
+																to="/review"
+																aria-label="My Reviews"
+																title="My Reviews"
+																className={({ isActive }) =>
+																	isActive
+																		? "font-medium tracking-wide text-red-400  transition-colors duration-200 hover:text-teal-accent-400"
+																		: "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+																}>
+																My Reviews
+															</NavLink>
+														</li>
+													</>
+												) : undefined}
 												<li>
 													<NavLink
 														to="/blog"
@@ -190,7 +220,6 @@ const Navbar = () => {
 						<ul className="flex items-center  space-x-8 lg:flex">
 							{user?.email ? (
 								<div>
-									{" "}
 									<div className="">
 										<img
 											title={user?.displayName}

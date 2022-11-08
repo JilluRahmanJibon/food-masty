@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AOS from "aos";
 import { Link } from "react-router-dom";
 import { FiArrowUpRight } from "react-icons/fi";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
@@ -13,7 +14,9 @@ const HomeRecipes = () => {
 				setRecipes(result);
 			});
 	}, []);
-
+	useEffect(() => {
+		AOS.init();
+	}, []);
 	return (
 		<div className=" mt-32 border p-5 border-gray-600 rounded">
 			<div className="sm:flex-row flex justify-between flex-col items-center border-b border-gray-500 pb-5">
@@ -29,7 +32,7 @@ const HomeRecipes = () => {
 			<div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 mt-10">
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
-						<div className="bg-gray-100 ">
+						<div data-aos="fade-right" className="bg-gray-100 ">
 							<PhotoProvider>
 								<PhotoView src={recipe.img}>
 									<img
