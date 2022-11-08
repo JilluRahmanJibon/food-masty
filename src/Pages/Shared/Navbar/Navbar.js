@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import logo from "../../assets/logo.png";
 const Navbar = () => {
-	const { user } = useContext(AuthContext);
+	const { user, userLogOut } = useContext(AuthContext);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	return (
 		<div>
@@ -219,7 +219,13 @@ const Navbar = () => {
 						</div>
 						<ul className="flex items-center  space-x-8 lg:flex">
 							{user?.email ? (
-								<div>
+								<div className="flex gap-2 items-center ">
+									{" "}
+									<button
+										onClick={() => userLogOut()}
+										className="bg-gray-600 px-3 rounded h-9">
+										Log Out
+									</button>
 									<div className="">
 										<img
 											title={user?.displayName}

@@ -9,6 +9,7 @@ import SignUp from "../Pages/Login/SignUp/Signup";
 import Recipes from "../Pages/Recipes/Recipes";
 import SingleRecipe from "../Pages/Recipes/SingleRecipe";
 import Review from "../Pages/Reivew/Review";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
 	{
@@ -18,13 +19,32 @@ const router = createBrowserRouter([
 		children: [
 			{ path: "/", element: <Home /> },
 			{ path: "/home", element: <Home /> },
-			{ path: "/recipes", element: <Recipes /> },
+			{
+				path: "/recipes",
+				loader: async () => fetch("http://localhost:5000/recipes"),
+				element: <Recipes />,
+			},
 			{ path: "/recipe/:id", element: <SingleRecipe /> },
-			{ path: "/addRecipe", element: <AddRecipe /> },
+			{
+				path: "/addRecipe",
+				element: (
+					<PrivateRouter>
+						{" "}
+						<AddRecipe />{" "}
+					</PrivateRouter>
+				),
+			},
 			{ path: "/blog", element: <Blog /> },
 			{ path: "/signup", element: <SignUp /> },
 			{ path: "/signin", element: <SignIn /> },
-			{ path: "/review", element: <Review /> },
+			{
+				path: "/review",
+				element: (
+					<PrivateRouter>
+						<Review />
+					</PrivateRouter>
+				),
+			},
 		],
 	},
 ]);

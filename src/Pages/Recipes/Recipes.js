@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 const Recipes = () => {
-	const [recipes, setRecipes] = useState([]);
-	useEffect(() => {
-		fetch("http://localhost:5000/recipes")
-			.then(res => res.json())
-			.then(result => {
-				setRecipes(result);
-			});
-	}, []);
+	const recipes = useLoaderData();
+
 	useEffect(() => {
 		AOS.init();
 	}, []);
