@@ -7,8 +7,10 @@ const SliderItems = ({ data }) => {
 			<div className="img-gradient"></div>
 			<img alt="slider" src={image} className=" w-full object-cover" />
 
-			<div className="absolute  flex lg:bottom-16 transform -translate-y-1/2  justify-center w-full ">
-				<p className="text-bold text-xl  text-gray-200  ">{text}</p>
+			<div className="absolute  flex  md:bottom-16 bottom-8 transform -translate-y-1/2  justify-center w-full ">
+				<p className="text-bold text-xl text-center   text-gray-200  ">
+					{text}
+				</p>
 			</div>
 
 			<div className="absolute w-full px-5  flex justify-between top-1/2 transform -translate-y-1/2   ">

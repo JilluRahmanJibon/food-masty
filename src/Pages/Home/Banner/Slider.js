@@ -1,8 +1,8 @@
 import React from "react";
-import img1 from "../../assets/images/homeRecipes/recipe-1.jpg";
-import img2 from "../../assets/images/homeRecipes/recipe-2.jpg";
-import img3 from "../../assets/images/homeRecipes/recipe-3.jpg";
-import img4 from "../../assets/images/homeRecipes/recipe-4.jpg";
+import img1 from "../../assets/images/slide/recipe-1.jpg";
+import img2 from "../../assets/images/slide/recipe-2.jpg";
+import img3 from "../../assets/images/slide/recipe-3.jpg";
+import img4 from "../../assets/images/slide/recipe-4.jpg";
 import SliderItems from "./SliderItems";
 
 const SliderData = [
