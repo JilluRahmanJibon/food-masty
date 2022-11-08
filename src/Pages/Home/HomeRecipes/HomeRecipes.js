@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowUpRight } from "react-icons/fi";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
-
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 const HomeRecipes = () => {
 	const [recipes, setRecipes] = useState([]);
 	useEffect(() => {
@@ -29,11 +30,15 @@ const HomeRecipes = () => {
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
 						<div className="bg-gray-100 ">
-							<img
-								className="border-b-2 border-gray-400"
-								src={recipe.img}
-								alt=""
-							/>
+							<PhotoProvider>
+								<PhotoView src={recipe.img}>
+									<img
+										className="border-b-2 cursor-pointer border-gray-400"
+										src={recipe.img}
+										alt=""
+									/>
+								</PhotoView>
+							</PhotoProvider>
 							<div className="px-2 pt-4">
 								<Link to={`/recipe/${recipe._id}`}>
 									<h1
