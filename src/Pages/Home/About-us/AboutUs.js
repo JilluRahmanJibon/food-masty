@@ -9,7 +9,7 @@ const AboutUs = () => {
 				</div>
 				<div className="lg:w-1/2 py-4">
 					<h5 className="text-red-500 pb-4 font-bold">WHO WE ARE</h5>
-					<h2 className="lg:text-5xl text-2xl font-bold pb-7">
+					<h2 className="lg:text-5xl text-2xl font-semibold pb-7">
 						10+ flavors in one <br className="hidden lg:block " /> place.
 					</h2>
 					<p className="md:text-justify lg:pt-4 text-xl">
