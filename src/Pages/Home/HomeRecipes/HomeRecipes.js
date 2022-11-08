@@ -5,8 +5,8 @@ import { FiArrowUpRight } from "react-icons/fi";
 const HomeRecipes = () => {
 	return (
 		<div className="mb-16 mt-28">
-			<div className="flex  justify-between border-b border-gray-400 pb-5">
-				<h1 className="text-4xl font-semibold">RECENT ADDED</h1>
+			<div className="flex  justify-between items-center border-b border-gray-400 pb-5">
+				<h1 className="sm:text-4xl text-xl font-semibold">RECENT ADDED</h1>
 				<Link
 					to="/recipes"
 					className="flex items-center bg-red-500 py-2 px-3 rounded-md hover:bg-red-600 text-white">
