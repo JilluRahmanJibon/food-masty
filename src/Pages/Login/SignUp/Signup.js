@@ -41,7 +41,7 @@ const SignUp = () => {
 				Swal.fire({
 					position: "top-center",
 					icon: "success",
-					title: "your account created successfully",
+					title: "your account created has been successfully",
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -66,7 +66,7 @@ const SignUp = () => {
 				Swal.fire({
 					position: "top-center",
 					icon: "success",
-					title: "your account created successfully",
+					title: "your account created has been successfully",
 					showConfirmButton: false,
 					timer: 1500,
 				});
