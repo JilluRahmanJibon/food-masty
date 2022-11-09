@@ -9,6 +9,7 @@ import SignUp from "../Pages/Login/SignUp/Signup";
 import Recipes from "../Pages/Recipes/Recipes";
 import SingleRecipe from "../Pages/Recipes/SingleRecipe";
 import MyReview from "../Pages/Review/MyReview";
+import UpdateReview from "../Pages/Review/UpdateReview";
 import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
@@ -43,6 +44,16 @@ const router = createBrowserRouter([
 				element: (
 					<PrivateRouter>
 						<MyReview />
+					</PrivateRouter>
+				),
+			},
+			{
+				path: "/updateReview/:id",
+				loader: async ({ params }) =>
+					fetch(`http://localhost:5000/reviewOne/${params.id}`),
+				element: (
+					<PrivateRouter>
+						<UpdateReview />
 					</PrivateRouter>
 				),
 			},

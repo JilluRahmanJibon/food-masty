@@ -3,7 +3,9 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import useTitle from "../../Hooks/useTitle";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { FaStar } from "react-icons/fa";
-
+import { BiEdit } from "react-icons/bi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const MyReview = () => {
 	useTitle("My_Reviews");
 	const { user, userLogOut } = useContext(AuthContext);
@@ -22,7 +24,7 @@ const MyReview = () => {
 			})
 			.then(data => setMyReview(data));
 	}, [user?.email, userLogOut]);
-	console.log(myReview);
+
 	return (
 		<div className="py-8">
 			{myReview.length ? (
@@ -32,21 +34,21 @@ const MyReview = () => {
 						{myReview.map(review => (
 							<div
 								key={review._id}
-								className="bg-gray-300 shadow-lg rounded-lg  shadow-slate-500 justify-between flex">
-								<div className="flex gap-3 ">
+								className="bg-gray-300 shadow-lg rounded-lg  shadow-slate-500 justify-between sm:flex">
+								<div className="sm:flex gap-3 ">
 									<PhotoProvider>
 										<PhotoView src={review.recipeImg}>
 											<img
-												className="w-[200px] rounded-l-lg cursor-pointer"
+												className="sm:w-[200px] rounded-l-lg cursor-pointer"
 												src={review.recipeImg}
 												alt=""
 											/>
 										</PhotoView>
 									</PhotoProvider>
-									<div>
+									<div className="sm:pl-0 sm:pt-0 pl-2 pt-4">
 										<h2
 											title="Title of food"
-											className="text-gray-900  font-bold  lg:text-xl pb-2">
+											className="text-gray-900  font-bold  text-xl pb-2">
 											{review.title}
 										</h2>
 										<p title="Client Review" className="text-gray-700">
@@ -62,14 +64,25 @@ const MyReview = () => {
 										</h1>
 									</div>
 								</div>
-								<div></div>
+								<div className="flex sm:flex-col justify-center gap-4 mb-4 sm:mb-0 sm:mt-0 mt-4 sm:mr-4">
+									<Link to={`/updateReview/${review._id}`}>
+										<BiEdit
+											title="Update Review"
+											className="cursor-pointer text-red-500 text-2xl"
+										/>
+									</Link>
+									<AiOutlineDelete
+										title="Remove item"
+										className="cursor-pointer text-red-500 text-2xl"
+									/>
+								</div>
 							</div>
 						))}
 					</div>
 				</div>
 			) : (
-				<h1 className="text-3xl font-semibold text-red-500 text-center">
-					No Reviews Found !
+				<h1 className="text-3xl font-bold text-red-500 text-center">
+					No Reviews were Added !
 				</h1>
 			)}
 		</div>
