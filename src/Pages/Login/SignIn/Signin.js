@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 const SignIn = () => {
 	// show password state
 	const [show, setShow] = useState(false);
@@ -21,6 +22,7 @@ const SignIn = () => {
 	});
 	const { continueWithGoogle, logInWithEmailAndPassword } =
 		useContext(AuthContext);
+	useTitle("Sign in");
 	const location = useLocation();
 	const from = location.state?.from?.pathname || "/";
 	const navigate = useNavigate();

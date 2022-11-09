@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 const SignUp = () => {
 	// terms and conditions state
 	const [checkbox, setCheckbox] = useState(true);
@@ -100,7 +101,7 @@ const SignUp = () => {
 			setUserInfo({ ...userInfo, password: password });
 		}
 	};
-
+	useTitle("Sign Up");
 	return (
 		<div>
 			<section>

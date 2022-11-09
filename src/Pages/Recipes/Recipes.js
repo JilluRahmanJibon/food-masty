@@ -4,9 +4,10 @@ import { Link, useLoaderData } from "react-router-dom";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import useTitle from "../../Hooks/useTitle";
 const Recipes = () => {
 	const recipes = useLoaderData();
-
+	useTitle("All-Recipes");
 	useEffect(() => {
 		AOS.init();
 	}, []);

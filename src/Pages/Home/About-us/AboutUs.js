@@ -1,8 +1,13 @@
-import React from "react";
 import person from "../../assets/images/about_us/person.jpg";
+import AOS from "aos";
+import { useEffect } from "react";
 const AboutUs = () => {
+	useEffect(() => {
+		AOS.init();
+	}, []);
+
 	return (
-		<div className="mt-28 border-b pb-5 border-gray-500">
+		<div data-aos="fade-up" className="mt-28 border-b pb-5 border-gray-500">
 			<div className="lg:flex gap-10">
 				<div className="lg:w-1/2">
 					<img className="rounded-xl " src={person} alt="" />

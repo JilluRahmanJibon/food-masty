@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsBoxArrowUpLeft } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const SingleRecipe = () => {
+	const { user } = useContext(AuthContext);
 	const [review, setReview] = useState(false);
 	const { id } = useParams();
 	const [recipe, setRecipe] = useState({});
@@ -12,6 +15,7 @@ const SingleRecipe = () => {
 			.then(res => res.json())
 			.then(result => setRecipe(result));
 	}, [id]);
+	useTitle("Recipe_Details");
 
 	return (
 		<div className="w-3/4 my-8 mx-auto">
@@ -45,38 +49,44 @@ const SingleRecipe = () => {
 						)}
 					</div>
 					{review ? (
-						<form>
-							<h1 className="text-gray-900 uppercase font-semibold pb-3">
-								give a review
-							</h1>
-							<textarea
-								className="w-full px-4 py-2 outline-none focus:border-red-500 border-2 bg-white"
-								name=""
-								required
-								id=""
-								placeholder="Your Review......"
-								cols="30"
-								rows="10"></textarea>
-							<div className="md:flex py-3 gap-8 ">
-								<input
-									required
-									type="text"
-									className="w-full px-4 py-2 md:mb-0 mb-3 outline-none focus:border-red-500 border-2 bg-white"
-									placeholder="Your Name*"
-								/>
-								<input
-									required
-									type="text"
-									className="w-full px-4 py-2 outline-none focus:border-red-500 border-2 bg-white"
-									placeholder="Your Email*"
-								/>
-							</div>
-							<input
-								className="cursor-pointer bg-red-600 py-2 px-6 inline-block  mb-5 mt-2 rounded hover:bg-gray-900 transition-all text-white"
-								type="submit"
-								value="Post Review"
-							/>
-						</form>
+						<>
+							{user?.email ? (
+								<form>
+									<h1 className="text-gray-900 uppercase font-semibold pb-3">
+										give a review
+									</h1>
+									<textarea
+										className="w-full px-4 py-2 outline-none focus:border-red-500 border-2 bg-white"
+										name=""
+										required
+										id=""
+										placeholder="Your Review......"
+										cols="30"
+										rows="10"></textarea>
+									<div className="md:flex py-3 gap-8 ">
+										<input
+											required
+											type="text"
+											className="w-full px-4 py-2 md:mb-0 mb-3 outline-none focus:border-red-500 border-2 bg-white"
+											placeholder="Your Name*"
+										/>
+										<input
+											required
+											type="text"
+											className="w-full px-4 py-2 outline-none focus:border-red-500 border-2 bg-white"
+											placeholder="Your Email*"
+										/>
+									</div>
+									<input
+										className="cursor-pointer bg-red-600 py-2 px-6 inline-block  mb-5 mt-2 rounded hover:bg-gray-900 transition-all text-white"
+										type="submit"
+										value="Post Review"
+									/>
+								</form>
+							) : (
+								<Link to="/signin">Login</Link>
+							)}
+						</>
 					) : (
 						""
 					)}
