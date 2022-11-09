@@ -1,9 +1,8 @@
 import React from "react";
 import Swal from "sweetalert2";
 import useTitle from "../../Hooks/useTitle";
-
 const AddRecipe = () => {
-	useTitle("Add-Recipe");
+	useTitle("Add_Recipe");
 	const addRecipe = e => {
 		e.preventDefault();
 		const form = e.target;
@@ -41,7 +40,7 @@ const AddRecipe = () => {
 			});
 	};
 	return (
-		<div className="my-10 ">
+		<div className="my-10  ">
 			<form onSubmit={addRecipe}>
 				<div className="relative z-0 mb-6 w-full group">
 					<input
@@ -60,7 +59,7 @@ const AddRecipe = () => {
 				</div>
 
 				<div className="relative z-0 mb-6 w-full group">
-					<input
+					<textarea
 						type="text"
 						name="description"
 						id="description"

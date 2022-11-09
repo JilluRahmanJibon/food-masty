@@ -6,7 +6,7 @@ const PrivateRouter = ({ children }) => {
 	const { user, loading } = useContext(AuthContext);
 	const location = useLocation();
 	if (loading) {
-		return;
+		return true;
 	}
 	if (user?.email) {
 		return children;

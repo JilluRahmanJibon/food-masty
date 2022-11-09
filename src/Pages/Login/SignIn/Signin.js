@@ -51,7 +51,7 @@ const SignIn = () => {
 		continueWithGoogle()
 			.then(result => {
 				const user = result.user;
-				console.log(user, "from google");
+
 				navigate(from, { replace: true });
 				Swal.fire({
 					position: "top-center",

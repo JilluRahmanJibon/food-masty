@@ -9,6 +9,7 @@ import SignUp from "../Pages/Login/SignUp/Signup";
 import Recipes from "../Pages/Recipes/Recipes";
 import SingleRecipe from "../Pages/Recipes/SingleRecipe";
 import Review from "../Pages/Reivew/Review";
+import ReviewForm from "../Pages/Reivew/ReviewForm";
 import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
 				element: (
 					<PrivateRouter>
 						<Review />
+					</PrivateRouter>
+				),
+			},
+			{
+				path: "/reviewForm",
+				element: (
+					<PrivateRouter>
+						<ReviewForm />
 					</PrivateRouter>
 				),
 			},

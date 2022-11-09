@@ -32,7 +32,7 @@ const HomeRecipes = () => {
 			<div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 mt-10">
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
-						<div data-aos="fade-right" className="bg-gray-100 ">
+						<div data-aos="flip-left" className="bg-gray-100 ">
 							<PhotoProvider>
 								<PhotoView src={recipe.img}>
 									<img

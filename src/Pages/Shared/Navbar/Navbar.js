@@ -202,15 +202,27 @@ const Navbar = () => {
 													</NavLink>
 												</li>
 
-												<li>
-													<NavLink
-														to=""
-														className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-														aria-label="Sign up"
-														title="Sign up">
-														Sign up
-													</NavLink>
-												</li>
+												{user?.email ? (
+													<li>
+														<button
+															onClick={() => userLogOut()}
+															className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+															aria-label="Log Out"
+															title="Log Out">
+															Log Out
+														</button>
+													</li>
+												) : (
+													<li>
+														<Link
+															to="/signin"
+															className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+															aria-label="Sign up"
+															title="Sign up">
+															Sign In
+														</Link>
+													</li>
+												)}
 											</ul>
 										</nav>
 									</div>
@@ -223,7 +235,7 @@ const Navbar = () => {
 									{" "}
 									<button
 										onClick={() => userLogOut()}
-										className="bg-gray-600 px-3 rounded h-9">
+										className="bg-gray-600 hidden lg:block px-3 rounded h-9">
 										Log Out
 									</button>
 									<div className="">
@@ -239,7 +251,7 @@ const Navbar = () => {
 								<li>
 									<NavLink
 										to="signin"
-										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										className="inline-flex hidden lg:block items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
 										aria-label="Sign In"
 										title="Sign In">
 										Sign In

@@ -7,7 +7,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import useTitle from "../../Hooks/useTitle";
 const Recipes = () => {
 	const recipes = useLoaderData();
-	useTitle("All-Recipes");
+	useTitle("All_Recipes");
 	useEffect(() => {
 		AOS.init();
 	}, []);
