@@ -32,17 +32,17 @@ const HomeRecipes = () => {
 			<div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 mt-10">
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
-						<div data-aos="flip-left" className="bg-gray-100 ">
+						<div data-aos="flip-left" className="bg-gray-100  h-full ">
 							<PhotoProvider>
 								<PhotoView src={recipe.img}>
 									<img
-										className="border-b-2 cursor-pointer border-gray-400"
+										className="border-b-2 md:h-[300px] w-full cursor-pointer border-gray-400"
 										src={recipe.img}
 										alt=""
 									/>
 								</PhotoView>
 							</PhotoProvider>
-							<div className="px-2 pt-4">
+							<div className="px-2 pb-16 pt-4">
 								<Link to={`/recipe/${recipe._id}`}>
 									<h1
 										title="Click for details"
@@ -54,7 +54,8 @@ const HomeRecipes = () => {
 									{recipe.details.slice(0, 100)}...
 								</p>
 							</div>
-							<div className="pt-6 pb-2  ">
+
+							<div className="pt-6 pb-2 absolute bottom-0	w-full  ">
 								<p className="uppercase px-4 border-t flex items-center justify-between border-gray-400 border-b py-2  text-black text-sm font-bold">
 									<span>Food |</span>{" "}
 									<Link

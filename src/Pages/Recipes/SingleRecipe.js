@@ -12,6 +12,7 @@ const SingleRecipe = () => {
 	const { id } = useParams();
 	const [recipe, setRecipe] = useState({});
 	const { img, title, price, ratings, details, _id } = recipe;
+
 	useEffect(() => {
 		fetch(`http://localhost:5000/recipes/${id}`)
 			.then(res => res.json())
@@ -54,16 +55,16 @@ const SingleRecipe = () => {
 	return (
 		<div className="my-8 lg:flex gap-8">
 			<div className="bg-gray-200 mx-auto lg:w-3/4 md:1/2 sm:w-3/4 ">
-				<img src={img} alt="" />
+				<img className="max-h-[500px] w-full" src={img} alt="" />
 				<div className="pt-4 border-t-2 px-4 pb-4 border-gray-500">
 					<div className="text-gray-800">
 						<p>Price: ${price}</p>
 						<p>Ratings: {ratings}</p>
 					</div>
-					<h1 className="text-gray-900 pb-4 text-xl text-center font-bold transition-all hover:text-red-500">
+					<h1 className="text-gray-900 pb-4 sm:text-xl text-sm text-center font-bold transition-all hover:text-red-500">
 						{title}
 					</h1>
-					<p className="text-gray-800">{details}</p>
+					<p className="text-gray-800 text-justify">{details}</p>
 					<div className="mt-3 flex justify-end">
 						<Link
 							title="See All Recipes."

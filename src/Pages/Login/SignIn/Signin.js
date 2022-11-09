@@ -77,7 +77,6 @@ const SignIn = () => {
 				})
 					.then(res => res.json())
 					.then(data => {
-						console.log(data);
 						localStorage.setItem("recipe-token", data.token);
 						navigate(from, { replace: true });
 						Swal.fire({

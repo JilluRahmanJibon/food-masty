@@ -6,6 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 const MyReview = () => {
 	useTitle("My_Reviews");
 	const { user, userLogOut } = useContext(AuthContext);
@@ -23,8 +24,23 @@ const MyReview = () => {
 				return res.json();
 			})
 			.then(data => setMyReview(data));
-	}, [user?.email, userLogOut]);
-
+	}, [user?.email, userLogOut, myReview]);
+	const handleDelete = async id => {
+		const confirm = window.confirm(
+			"Are you sure ? You want to delete this review?"
+		);
+		if (confirm) {
+			fetch(`http://localhost:5000/deleteReview/${id}`, {
+				method: "DELETE",
+			})
+				.then(res => res.json())
+				.then(result => {
+					if (result.acknowledged) {
+						toast.success("Successfully deleted ", { duration: 3000 });
+					}
+				});
+		}
+	};
 	return (
 		<div className="py-8">
 			{myReview.length ? (
@@ -72,6 +88,7 @@ const MyReview = () => {
 										/>
 									</Link>
 									<AiOutlineDelete
+										onClick={() => handleDelete(review._id)}
 										title="Remove item"
 										className="cursor-pointer text-red-500 text-2xl"
 									/>
