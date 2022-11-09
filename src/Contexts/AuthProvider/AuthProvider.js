@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
 	};
 	// Log out
 	const userLogOut = () => {
+		localStorage.clear();
 		return signOut(auth);
 	};
 	// auth on state change ...  who is the login now log out now for checking

@@ -16,7 +16,7 @@ const Recipes = () => {
 			<div className="grid xl:grid-cols-3 md:grid-cols-2 gap-8 mt-10 mb-10">
 				{recipes.map(recipe => (
 					<div key={recipe._id}>
-						<div data-aos="fade-up" className="bg-gray-100 ">
+						<div data-aos="flip-right" className="bg-gray-100 ">
 							<PhotoProvider>
 								<PhotoView src={recipe.img}>
 									<img

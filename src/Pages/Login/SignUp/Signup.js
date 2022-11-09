@@ -37,15 +37,26 @@ const SignUp = () => {
 		continueWithGoogle()
 			.then(result => {
 				const user = result.user;
-				console.log(user, "from google");
-				navigate(from, { replace: true });
-				Swal.fire({
-					position: "top-center",
-					icon: "success",
-					title: "your account created has been successfully",
-					showConfirmButton: false,
-					timer: 1500,
-				});
+				const currentUser = {
+					email: user.email,
+				};
+				fetch("http://localhost:5000/jwt", {
+					method: "POST",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify(currentUser),
+				})
+					.then(res => res.json())
+					.then(data => {
+						localStorage.setItem("recipe-token", data.token);
+						navigate(from, { replace: true });
+						Swal.fire({
+							position: "top-center",
+							icon: "success",
+							title: "your account has been created successfully",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+					});
 			})
 			.catch(error => {
 				console.error(error);
@@ -62,15 +73,26 @@ const SignUp = () => {
 			.then(result => {
 				userProfileUpdate(name, photourl);
 				const user = result.user;
-				console.log(user);
-				navigate(from, { replace: true });
-				Swal.fire({
-					position: "top-center",
-					icon: "success",
-					title: "your account created has been successfully",
-					showConfirmButton: false,
-					timer: 1500,
-				});
+				const currentUser = {
+					email: user.email,
+				};
+				fetch("http://localhost:5000/jwt", {
+					method: "POST",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify(currentUser),
+				})
+					.then(res => res.json())
+					.then(data => {
+						localStorage.setItem("recipe-token", data.token);
+						navigate(from, { replace: true });
+						Swal.fire({
+							position: "top-center",
+							icon: "success",
+							title: "your account has been created successfully",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+					});
 			})
 			.catch(error => {
 				setLoading(false);

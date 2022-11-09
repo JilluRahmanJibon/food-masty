@@ -10,7 +10,7 @@ const Review = ({ id }) => {
 				const reviewData = result.filter(data => data.reviewId === id);
 				setReview(reviewData);
 			});
-	}, [id]);
+	}, [review, id]);
 
 	return (
 		<div className="">
