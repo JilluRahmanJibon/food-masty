@@ -66,6 +66,7 @@ const AuthProvider = ({ children }) => {
 		logInWithEmailAndPassword,
 		userLogOut,
 		continueWithGoogle,
+		setLoading,
 	};
 	return (
 		<div>

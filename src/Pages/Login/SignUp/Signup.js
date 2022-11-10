@@ -36,10 +36,12 @@ const SignUp = () => {
 	const signUpWithGoogle = () => {
 		continueWithGoogle()
 			.then(result => {
+				setLoading(true);
 				const user = result.user;
 				const currentUser = {
 					email: user.email,
 				};
+
 				fetch(" https://food-masty-server.vercel.app/jwt", {
 					method: "POST",
 					headers: { "content-type": "application/json" },
@@ -56,11 +58,14 @@ const SignUp = () => {
 							showConfirmButton: false,
 							timer: 1500,
 						});
+						setLoading(false);
 					});
 			})
 			.catch(error => {
 				console.error(error);
+				setLoading(false);
 			});
+		setLoading(true);
 	};
 
 	// create user
@@ -68,10 +73,10 @@ const SignUp = () => {
 		e.preventDefault();
 		const form = e.target;
 		const name = form.name.value;
-		const photourl = form.photoUrl.value;
+		const photoUrl = form.photoUrl.value;
 		createUserWithEmailAndPass(userInfo.email, userInfo.password)
 			.then(result => {
-				userProfileUpdate(name, photourl);
+				userProfileUpdate(name, photoUrl);
 				const user = result.user;
 				const currentUser = {
 					email: user.email,

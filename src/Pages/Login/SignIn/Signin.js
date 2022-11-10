@@ -21,7 +21,7 @@ const SignIn = () => {
 		password: "",
 		fireError: "",
 	});
-	const { continueWithGoogle, logInWithEmailAndPassword } =
+	const { continueWithGoogle, setLoading, logInWithEmailAndPassword } =
 		useContext(AuthContext);
 	useTitle("Sign in");
 	const location = useLocation();
@@ -31,8 +31,10 @@ const SignIn = () => {
 	// sign in with email and password
 	const signInWithEmailAndPassword = e => {
 		e.preventDefault();
+
 		logInWithEmailAndPassword(userInfo.email, userInfo.password)
 			.then(result => {
+				setLoading(true);
 				const user = result.user;
 				const currentUser = {
 					email: user.email,
@@ -56,12 +58,15 @@ const SignIn = () => {
 							showConfirmButton: false,
 							timer: 1500,
 						});
+						setLoading(false);
 					});
 			})
 			.catch(error => {
 				setErrors({ ...errors, fireError: error.message });
+				setLoading(false);
 			});
 		setErrors({ ...errors, fireError: "" });
+		setLoading(true);
 	}; // Sign in with google
 	const signInWithGoogle = async () => {
 		continueWithGoogle()
