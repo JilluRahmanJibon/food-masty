@@ -1,6 +1,6 @@
 # FOOD & MASTY
 
-# Welcome to Our FOOD&MASTY Platform
+# Welcome to Our FOOD&MASTY Portfolio
 
 ## FOOD MASTY Live WebSite Link: https://food-review-a613a.web.app
 
