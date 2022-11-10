@@ -117,7 +117,7 @@ const Footer = () => {
 				<div className="py-6 text-sm text-center dark:text-gray-400">
 					© 2022 All rights reserved at{" "}
 					<span
-						title="gor to https://web.programming-hero.com"
+						title="if you want to know more info please visit here 👉🏿  https://web.programming-hero.com"
 						className="text-red-500 font-bold italic">
 						<a target={"_blank"} href="https://web.programming-hero.com">
 							Programming-Hero{" "}

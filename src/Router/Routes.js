@@ -22,7 +22,8 @@ const router = createBrowserRouter([
 			{ path: "/home", element: <Home /> },
 			{
 				path: "/recipes",
-				loader: async () => fetch("http://localhost:5000/recipes"),
+				loader: async () =>
+					fetch(" https://food-masty-server.vercel.app/recipes"),
 				element: <Recipes />,
 			},
 			{ path: "/recipe/:id", element: <SingleRecipe /> },
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
 			{
 				path: "/updateReview/:id",
 				loader: async ({ params }) =>
-					fetch(`http://localhost:5000/reviewOne/${params.id}`),
+					fetch(` https://food-masty-server.vercel.app/reviewOne/${params.id}`),
 				element: (
 					<PrivateRouter>
 						<UpdateReview />

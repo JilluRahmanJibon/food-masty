@@ -70,10 +70,12 @@ const AuthProvider = ({ children }) => {
 	return (
 		<div>
 			{loading && (
-				<div className="flex justify-center items-center">
-					<div
-						className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-						role="status"></div>
+				<div className=" w-full z-50 absolute top-1/2 items-center">
+					<div className="flex justify-center items-center">
+						<div
+							className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+							role="status"></div>
+					</div>
 				</div>
 			)}
 			<AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

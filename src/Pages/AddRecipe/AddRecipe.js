@@ -18,7 +18,7 @@ const AddRecipe = () => {
 			ratings: ratings,
 			details: description,
 		};
-		fetch(`http://localhost:5000/recipes`, {
+		fetch(` https://food-masty-server.vercel.app/recipes`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

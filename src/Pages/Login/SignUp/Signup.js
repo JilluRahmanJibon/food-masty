@@ -40,7 +40,7 @@ const SignUp = () => {
 				const currentUser = {
 					email: user.email,
 				};
-				fetch("http://localhost:5000/jwt", {
+				fetch(" https://food-masty-server.vercel.app/jwt", {
 					method: "POST",
 					headers: { "content-type": "application/json" },
 					body: JSON.stringify(currentUser),
@@ -76,7 +76,7 @@ const SignUp = () => {
 				const currentUser = {
 					email: user.email,
 				};
-				fetch("http://localhost:5000/jwt", {
+				fetch(" https://food-masty-server.vercel.app/jwt", {
 					method: "POST",
 					headers: { "content-type": "application/json" },
 					body: JSON.stringify(currentUser),
@@ -127,9 +127,9 @@ const SignUp = () => {
 	return (
 		<div>
 			<section>
-				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+				<div className="flex flex-col items-center justify-center px-6 py-8 animationContainer mx-auto   lg:py-0">
 					<div
-						className={`w-full   rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0   border-gray-700`}>
+						className={`w-full   rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md customAnimation xl:p-0   border-gray-700`}>
 						{errors.fireError && (
 							<p className=" text-center text-red-400">{errors.fireError}</p>
 						)}
