@@ -25,7 +25,7 @@ const HomeRecipes = () => {
 					title="View all recipes"
 					to="/recipes"
 					className="flex items-center bg-red-500 font-semibold py-2 mt-2 sm:mt-0 px-3 rounded-md hover:bg-red-600 text-white">
-					<span>View more</span> <FiArrowUpRight />
+					<span>See All</span> <FiArrowUpRight />
 				</Link>
 			</div>
 

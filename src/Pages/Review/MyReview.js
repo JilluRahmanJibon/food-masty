@@ -53,7 +53,7 @@ const MyReview = () => {
 						{myReview.map(review => (
 							<div
 								key={review._id}
-								className="bg-gray-300 shadow-lg rounded-lg  shadow-slate-500 justify-between sm:flex">
+								className="bg-gray-300 relative shadow-lg rounded-lg  shadow-slate-500 justify-between sm:flex">
 								<div className="sm:flex gap-3 ">
 									<PhotoProvider>
 										<PhotoView src={review.recipeImg}>
@@ -73,7 +73,7 @@ const MyReview = () => {
 										<p title="Client Review" className="text-gray-700">
 											{review.message}
 										</p>
-										<h1 className="flex text-gray-700 items-center pt-3">
+										<h1 className="flex text-gray-700 mb-6 items-center pt-3">
 											<span className="font-semibold">Starts:</span>{" "}
 											<small className="ml-2 font-bold">{review.star}</small>{" "}
 											<small className="pt-1 text-red-500">
@@ -81,9 +81,14 @@ const MyReview = () => {
 												<FaStar />
 											</small>
 										</h1>
+										<p
+											className="absolute text-gray-600   sm:bottom-0 sm:top-auto top-0"
+											title="your review posted time">
+											<small className="font-bold">{review.date}</small>
+										</p>
 									</div>
 								</div>
-								<div className="flex sm:flex-col justify-center gap-4 mb-4 sm:mb-0 sm:mt-0 mt-4 sm:mr-4">
+								<div className="flex sm:flex-col justify-center gap-4 mb-4 sm:mb-0 sm:mt-0 mt-4 sm:ml-2 sm:mr-4">
 									<Link to={`/updateReview/${review._id}`}>
 										<BiEdit
 											title="Update Review"

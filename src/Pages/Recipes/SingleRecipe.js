@@ -137,11 +137,15 @@ const SingleRecipe = () => {
 														name="message"
 														required
 														id=""
-														placeholder="Your Review......"
+														placeholder="Your Feedback......"
 														cols="30"
 														rows="5"></textarea>
+
 													<input
 														name="star"
+														min="1"
+														max="5"
+														maxlength="1"
 														required
 														type="number"
 														className="w-full px-4 py-2 md:mb-0  mt-1 outline-none focus:border-red-500 border-2 bg-white"
@@ -225,7 +229,7 @@ const SingleRecipe = () => {
 										name="message"
 										required
 										id=""
-										placeholder="Your Review......"
+										placeholder="Your Feedback......"
 										cols="30"
 										rows="5"></textarea>
 									<input
