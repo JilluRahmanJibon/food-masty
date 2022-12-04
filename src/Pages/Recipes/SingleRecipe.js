@@ -25,7 +25,6 @@ const SingleRecipe = () => {
 		const yyyy = date.getFullYear();
 		let mm = date.getMonth() + 1;
 		let dd = date.getDate();
-
 		if (dd < 10) dd = "0" + dd;
 		if (mm < 10) mm = "0" + mm;
 		let hours = date.getHours();
@@ -38,7 +37,6 @@ const SingleRecipe = () => {
 			hours + ":" + minutes + " " + ampm + " " + dd + "/" + mm + "/" + yyyy;
 		return strTime;
 	}
-
 	const currentDate = formatDate(new Date());
 
 	const handleReview = async e => {

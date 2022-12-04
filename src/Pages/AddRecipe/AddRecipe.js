@@ -7,37 +7,46 @@ const AddRecipe = () => {
 		e.preventDefault();
 		const form = e.target;
 		const recipeName = form.recipeName.value;
-		const recipePhotoUrl = form.recipePhotoUrl.value;
+
 		const description = form.description.value;
 		const price = form.price.value;
 		const ratings = form.ratings.value;
-		const recipe = {
-			title: recipeName,
-			img: recipePhotoUrl,
-			price: price,
-			ratings: ratings,
-			details: description,
-		};
-		fetch(` https://food-masty-server.vercel.app/recipes`, {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(recipe),
+		// const recipe = {
+		// 	title: recipeName,
+		// 	img: recipePhotoUrl,
+		// 	price: parseInt(price),
+		// 	ratings: ratings,
+		// 	details: description,
+		// };
+
+		// fetch(` https://food-masty-server.vercel.app/recipes`, {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"content-type": "application/json",
+		// 	},
+		// 	body: JSON.stringify(recipe),
+		// })
+		// 	.then(res => res.json())
+		// 	.then(data => {
+		// 		if (data.acknowledged) {
+		// 			Swal.fire({
+		// 				position: "top-center",
+		// 				icon: "success",
+		// 				title: "Recipe Added Successfully",
+		// 				showConfirmButton: false,
+		// 				timer: 1500,
+		// 			});
+		// 			form.reset();
+		// 		}
+		// 	});
+		const image = form.image.files[0];
+		const formData = new FormData()
+		formData.append('image', image)
+		console.log(formData);
+		const url = 'https://api.imgbb.com/1/upload?key=0ddea17d62c9c450d95fa4f0d6cf6943'
+		fetch(url, { method: 'POST', body: formData }).then(res => res.json()).then(data => {
+			console.log(data);
 		})
-			.then(res => res.json())
-			.then(data => {
-				if (data.acknowledged) {
-					Swal.fire({
-						position: "top-center",
-						icon: "success",
-						title: "Recipe Added Successfully",
-						showConfirmButton: false,
-						timer: 1500,
-					});
-					form.reset();
-				}
-			});
 	};
 	return (
 		<div className="my-10  ">
@@ -75,8 +84,8 @@ const AddRecipe = () => {
 				</div>
 				<div className="relative z-0 mb-6 w-full group">
 					<input
-						type="text"
-						name="recipePhotoUrl"
+						type="file"
+						name="image"
 						id="recipePhotoUrl"
 						className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
 						placeholder=" "
